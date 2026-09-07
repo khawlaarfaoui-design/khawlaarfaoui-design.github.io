@@ -1,344 +1,372 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khawla Arfaoui — Portfolio Élève Ingénieure ENIT</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <title>Khawla Arfaoui — Portfolio ENIT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom Config for Palette -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            500: '#0284c7',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
-                        },
-                        surface: '#f8fafc',
-                    }
-                }
+    <style>
+        :root {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --primary-gradient: linear-gradient(135deg, #0284c7, #2563eb);
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #1e293b;
+            padding: 12px 24px;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 6px;
+            background-color: #1e293b;
+            padding: 4px;
+            border-radius: 9999px;
+        }
+
+        .nav-pills a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.2s;
+        }
+
+        .nav-pills a.active {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .btn-contact {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Layout Main */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.4fr 1fr;
             }
         }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+
+        /* Hero Left Content */
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
         }
-        .pill-nav-active {
+
+        .gradient-text {
             background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: white !important;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background-color: #e0f2fe;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-info h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .feature-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Right Profile Card */
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 16px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #38bdf8;
+        }
+
+        .badge-enit {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .profile-title {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 16px 0;
+            margin: 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .contact-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-dark {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+
+        .btn-outline {
+            background-color: #f8fafc;
+            color: #334155;
+            border: 1px solid var(--border-color);
         }
     </style>
 </head>
-<body class="bg-surface text-slate-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900">
+<body>
 
-    <!-- Header Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            
-            <div class="flex items-center gap-3">
-                <a href="#" class="text-xl font-bold tracking-tight text-white">Khawla Arfaoui</a>
-                <span class="hidden sm:inline-block text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-                    ⚡ Génie Électrique & Embedded AI
-                </span>
-            </div>
-
-            <!-- Pill Navigation Bar -->
-            <nav class="hidden md:flex items-center gap-1 bg-slate-800/80 p-1.5 rounded-full border border-slate-700/60 shadow-inner">
-                <a href="#about" class="pill-nav-active text-xs font-semibold px-4 py-2 rounded-full transition">Présentation</a>
-                <a href="#focus" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-2 rounded-full transition">Domaines</a>
-                <a href="#projects" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-2 rounded-full transition">Projets</a>
-                <a href="#experience" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-2 rounded-full transition">Expériences</a>
-                <a href="#contact" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-2 rounded-full transition">Contact</a>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Khawla Arfaoui</a>
+            <nav class="nav-pills">
+                <a href="#" class="active">Présentation</a>
+                <a href="#projets">Projets</a>
+                <a href="#contact">Contact</a>
             </nav>
-
-            <a href="#contact" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-lg shadow-sky-500/20 transition flex items-center gap-2">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Me Contacte</span>
-            </a>
+            <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn" class="btn-contact">Me Contacte</a>
         </div>
     </header>
 
-    <!-- Main Content Wrapper -->
-    <main class="max-w-7xl mx-auto px-6 py-10 space-y-16">
-
-        <!-- Hero Section -->
-        <section id="about" class="grid lg:grid-cols-12 gap-8 items-start pt-4">
+    <main>
+        <div class="hero-grid">
             
-            <!-- Left Side: Headline + Focus Cards -->
-            <div class="lg:col-span-7 space-y-8">
-                
-                <div>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                        L'Énergie & L'IA <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">
-                            en Avenir Embarqué
-                        </span>
-                    </h1>
-                    <p class="text-slate-600 text-base leading-relaxed max-w-2xl">
-                        Élève ingénieure en Génie Électrique à l'<strong>ENIT</strong>, je me spécialise dans la convergence entre systèmes énergétiques, intelligence artificielle et accélération matérielle sur architectures <strong>RISC-V</strong>. Je recherche un <strong>Stage de Fin d'Études (PFE)</strong>.
-                    </p>
+            <!-- Left Side -->
+            <div>
+                <h1 class="hero-title">
+                    L'Énergie & L'IA <br>
+                    <span class="gradient-text">en Avenir Embarqué</span>
+                </h1>
+                <p class="hero-desc">
+                    Élève ingénieure en Génie Électrique à l'<strong>ENIT</strong>, je me spécialise dans la convergence entre systèmes énergétiques, intelligence artificielle et accélération matérielle sur architectures <strong>RISC-V</strong>. Je recherche un <strong>Stage de Fin d'Études (PFE)</strong>.
+                </p>
+
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="feature-info">
+                            <h3>Génie Électrique & Microgrids</h3>
+                            <p>Surveillance énergétique (NILM), prévision de charge et systèmes de puissance.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="feature-info">
+                            <h3>Embedded AI & RISC-V</h3>
+                            <p>Déploiement NPU (TH1520), compilation HHB, extensions RVV et Linux embarqué.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div class="feature-info">
+                            <h3>Deep Learning Frameworks</h3>
+                            <p>Modélisation PyTorch/Keras, export ONNX, quantification INT8 et pipelines d'inférence.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Structured Focus Cards -->
-                <div class="space-y-4" id="focus">
-                    
-                    <div class="glass-card p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center gap-5 border-l-4 border-l-sky-500">
-                        <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 text-base">Génie Électrique & Microgrids</h3>
-                            <p class="text-xs text-slate-500 mt-0.5">Surveillance énergétique (NILM), prévision de charge et systèmes de puissance.</p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center gap-5 border-l-4 border-l-blue-600">
-                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-microchip"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 text-base">Embedded AI & RISC-V</h3>
-                            <p class="text-xs text-slate-500 mt-0.5">Déploiement NPU (TH1520), compilation HHB, extensions RVV et Linux embarqué.</p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center gap-5 border-l-4 border-l-indigo-600">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 text-base">Deep Learning Frameworks</h3>
-                            <p class="text-xs text-slate-500 mt-0.5">Modélisation PyTorch/Keras, export ONNX, quantification INT8 et pipelines d'inférence.</p>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
 
-            <!-- Right Side: Floating Profile Card -->
-            <div class="lg:col-span-5 flex justify-center">
-                <div class="w-full max-w-md bg-white rounded-3xl p-8 shadow-xl border border-slate-100 text-center space-y-6 relative overflow-hidden">
-                    
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-sky-200 rounded-full blur-2xl opacity-60"></div>
-
-                    <!-- Profile Image -->
-                    <div class="relative inline-block">
-                        <div class="w-36 h-36 mx-auto rounded-full p-1 bg-gradient-to-tr from-sky-400 to-blue-600 shadow-lg">
-                            <img src="52889ed3-17f9-4ae3-949f-6818b152aca1.jpg" 
-                                 alt="Khawla Arfaoui" 
-                                 class="w-full h-full object-cover rounded-full bg-slate-100"
-                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Khawla+Arfaoui&background=0284c7&color=fff&size=128';">
-                        </div>
-                        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-sky-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md whitespace-nowrap flex items-center gap-1.5">
-                            <i class="fa-solid fa-graduation-cap"></i> ENIT
-                        </span>
+            <!-- Right Profile Card -->
+            <div>
+                <div class="profile-card">
+                    <div class="profile-img-container">
+                        <img src="52889ed3-17f9-4ae3-949f-6818b152aca1.jpg" alt="Khawla Arfaoui" class="profile-img" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Khawla+Arfaoui&background=0284c7&color=fff&size=128';">
+                        <span class="badge-enit"><i class="fa-solid fa-graduation-cap"></i> ENIT</span>
                     </div>
 
-                    <!-- Name and Description -->
-                    <div class="pt-2">
-                        <h2 class="text-2xl font-extrabold text-slate-900">Khawla Arfaoui</h2>
-                        <p class="text-xs font-semibold text-sky-600 mt-1 uppercase tracking-wider">Élève Ingénieure en Génie Électrique</p>
-                        <p class="text-xs text-slate-500 mt-2">Spécialisation IA Embarquée & Systèmes Intelligents</p>
-                    </div>
+                    <h2 class="profile-name">Khawla Arfaoui</h2>
+                    <p class="profile-title">Élève Ingénieure en Génie Électrique</p>
+                    <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Spécialisation IA Embarquée & Systèmes Intelligents</p>
 
-                    <!-- Metrics Grid -->
-                    <div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100">
+                    <div class="metrics-grid">
                         <div>
-                            <span class="block text-2xl font-extrabold text-sky-600">12.1</span>
-                            <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wide">FPS (C906)</span>
+                            <span class="metric-value">12.1</span>
+                            <span class="metric-label">FPS (C906)</span>
                         </div>
                         <div>
-                            <span class="block text-2xl font-extrabold text-sky-600">78.5</span>
-                            <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wide">FPS (NPU)</span>
+                            <span class="metric-value">78.5</span>
+                            <span class="metric-label">FPS (NPU)</span>
                         </div>
                         <div>
-                            <span class="block text-2xl font-extrabold text-sky-600">2026</span>
-                            <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wide">Diplôme</span>
+                            <span class="metric-value">2026</span>
+                            <span class="metric-label">Diplôme</span>
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="space-y-2 pt-2">
-                        <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn" class="block w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition shadow-sm">
-                            <i class="fa-solid fa-envelope mr-2"></i>khawla.arfaoui@etudiant-enit.utm.tn
+                    <div class="contact-btn-group">
+                        <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn" class="btn-full btn-dark">
+                            <i class="fa-solid fa-envelope"></i> Email Contact
                         </a>
-                        <a href="tel:+21624453574" class="block w-full py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold border border-slate-200 transition">
-                            <i class="fa-solid fa-phone mr-2 text-slate-400"></i>+216 24 453 574
+                        <a href="tel:+21624453574" class="btn-full btn-outline">
+                            <i class="fa-solid fa-phone"></i> +216 24 453 574
                         </a>
                     </div>
-
                 </div>
             </div>
 
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="space-y-8 pt-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900">Projets d'Ingénierie & Résultats</h2>
-                    <p class="text-xs text-slate-500 mt-1">Démonstration concrète d'implémentation matérielle et logicielle</p>
-                </div>
-                <span class="text-xs font-mono text-sky-600 bg-sky-50 px-3 py-1 rounded-full border border-sky-100 self-start sm:self-auto">
-                    RISC-V • NPU • Deep Learning
-                </span>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="grid md:grid-cols-2 gap-6">
-
-                <!-- Project 1 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start gap-2 mb-2">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md">BeagleV-Ahead</span>
-                            <span class="text-[11px] font-mono text-slate-400">SOC TH1520</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">Déploiement & Optimisation IA Embarquée</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Étude d'architecture du SoC T-Head TH1520 (cœurs C910/C906, RVV 0.7.1) et mise en place de la chaîne de compilation croisée sous Linux/Yocto avec les bibliothèques SHL/CSI-NN2.
-                        </p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-slate-100">
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">RISC-V</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Yocto</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Docker</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">HHB Compiler</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start gap-2 mb-2">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md">Exécution CPU Directe</span>
-                            <span class="text-[11px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">82.38 ms (12.14 FPS)</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">Classification CNN sur Processeur RISC-V C906</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Déploiement d'un CNN léger (1x64x64x1) sur cœur C906 autonome. Résolution active des conflits de types (INT8 vs Float) et erreurs Squeeze lors du pipeline HHB/ONNX.
-                        </p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-slate-100">
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Keras</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">ONNX</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">C906 Core</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Cross-compilation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start gap-2 mb-2">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md">Smart Energy</span>
-                            <span class="text-[11px] font-mono text-slate-400">Dataset Plegma</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">Deep Learning for NILM (Energy Monitoring)</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Entraînement de modèles Deep CNN pour la désagrégation de consommation électrique sur fenêtres de 128 points (332 765 échantillons d'entraînement).
-                        </p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-slate-100">
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">PyTorch</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">ONNX Export</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Energy AI</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start gap-2 mb-2">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md">Accélération NPU</span>
-                            <span class="text-[11px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">12.73 ms (78.53 FPS)</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">Déploiement NILM sur NPU TH1520</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Accélération matérielle du réseau NILM (1x1x1x128) via le driver VHA (/dev/vha0). Analyse des problématiques d'alignement mémoire (Wrong Memory Alignment).
-                        </p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-slate-100">
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">NPU Hardware</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">VHA Driver</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">libshl_th1520</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Experience & Industrial Background -->
-        <section id="experience" class="bg-slate-900 text-white rounded-3xl p-8 shadow-xl space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-xl font-bold">Parcours & Immersion Industrielle</h2>
-                <p class="text-xs text-slate-400 mt-1">Lien direct entre l'ingénierie électrique classique et l'IA embarquée</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                    <div class="flex justify-between items-center text-xs text-sky-400 font-semibold">
-                        <span>STEG — Secteur Électrique</span>
-                        <span>Juin 2025</span>
-                    </div>
-                    <h3 class="font-bold text-base text-white">Stage Industriel</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Compétences concrètes acquises sur le terrain au sein de la Société Tunisienne de l'Électricité et du Gaz. Compréhension directe des systèmes énergétiques appliquée à mes recherches en IA.
-                    </p>
-                </div>
-
-                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                    <div class="flex justify-between items-center text-xs text-sky-400 font-semibold">
-                        <span>ENIT</span>
-                        <span>Diplôme prévu en 2026</span>
-                    </div>
-                    <h3 class="font-bold text-base text-white">Cycle Ingénieur Génie Électrique</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Formation rigoureuse en systèmes de puissance, traitement du signal, électronique de puissance et automatismes intelligents.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer / Direct Contact -->
-        <section id="contact" class="text-center py-8 space-y-4">
-            <h2 class="text-2xl font-extrabold text-slate-900">À la recherche d'une stagiaire PFE passionnée ?</h2>
-            <p class="text-xs text-slate-500 max-w-md mx-auto">
-                Je suis immédiatement disponible pour échanger sur vos opportunités de Stage de Fin d'Études.
-            </p>
-            <div class="flex justify-center gap-4 pt-2">
-                <a href="https://www.linkedin.com/in/khawla-arfaoui-5252ba3ba" target="_blank" class="bg-blue-600 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition flex items-center gap-2">
-                    <i class="fa-brands fa-linkedin text-sm"></i> Profile LinkedIn
-                </a>
-                <a href="https://github.com/khawlaarfaoui-design" target="_blank" class="bg-slate-800 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md hover:bg-slate-700 transition flex items-center gap-2">
-                    <i class="fa-brands fa-github text-sm"></i> GitHub
-                </a>
-            </div>
-            <p class="text-[11px] text-slate-400 pt-8">&copy; 2026 Khawla Arfaoui — ENIT Génie Électrique.</p>
-        </section>
-
+        </div>
     </main>
 
 </body>
