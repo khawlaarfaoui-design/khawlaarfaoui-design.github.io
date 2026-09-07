@@ -3,436 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khawla Arfaoui — Portfolio e-Ingénierie & Edge AI</title>
+    <title>Khawla Arfaoui | Portfolio Ingénieure Génie Électrique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0b0f17;
-            --bg-card: #151c28;
-            --bg-card-hover: #1e293b;
-            --primary: #0EA5E9;
-            --primary-accent: #0284c7;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
-            --accent-green: #10b981;
-            --code-bg: #030712;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        /* Navigation Header */
-        header { position: sticky; top: 0; z-index: 100; background: rgba(11, 15, 23, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.1rem; font-weight: 800; color: #fff; text-decoration: none; }
-        .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
-        .nav-links a:hover { color: var(--primary); }
-        .btn-nav { background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-        /* Common Section Layout */
-        section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
-        .section-title i { color: var(--primary); font-size: 1.5rem; }
-        .section-subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px; }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
         /* Hero Section */
-        .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-        @media (min-width: 992px) { .hero-grid { grid-template-columns: 1.3fr 0.9fr; } }
-        .hero-title { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
-        .gradient-text { background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { color: var(--text-muted); font-size: 1rem; margin-bottom: 24px; }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
-        .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); }
-        .btn:hover { transform: translateY(-2px); }
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-        /* Profile Card */
-        .profile-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; text-align: center; }
-        .profile-img-container { position: relative; width: 130px; height: 130px; margin: 0 auto 16px; }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary); }
-        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .metric-val { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: block; }
-        .metric-lbl { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero h1 {
+            font-size: 2.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
 
-        /* Skills Section */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .skill-card { background: var(--bg-card); border: 1px solid var(--border); padding: 24px; border-radius: 12px; }
-        .skill-card h3 { font-size: 1rem; margin-bottom: 12px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: rgba(14, 165, 233, 0.1); color: var(--primary); border: 1px solid rgba(14, 165, 233, 0.2); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+        .hero h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
 
-        /* Projects Section */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
-        .project-card:hover { border-color: var(--primary); transform: translateY(-4px); }
-        .project-tag { font-size: 0.7rem; font-weight: 700; color: var(--accent-green); text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
-        .project-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; flex-grow: 1; }
-        .metric-badge { background: #030712; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--primary); }
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
 
-        /* Experience & Education */
-        .timeline { border-left: 2px solid var(--border); padding-left: 20px; margin-left: 10px; }
-        .timeline-item { position: relative; margin-bottom: 32px; }
-        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 4px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; }
-        .timeline-date { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 4px; }
+        .hero-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
 
-        /* Modal Details */
-        .modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(8px); overflow-y: auto; padding: 20px; }
-        .modal-content { background: var(--bg-card); border: 1px solid var(--border); max-width: 800px; margin: 40px auto; border-radius: 20px; padding: 32px; position: relative; }
-        .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
-        .modal-body h4 { color: var(--primary); margin: 16px 0 8px; font-size: 1rem; }
-        .workflow-box { background: var(--code-bg); padding: 12px; border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent-green); margin: 12px 0; white-space: pre-wrap; }
+        .hero-contact a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
 
-        /* Contact Form */
-        .contact-form { display: grid; gap: 16px; max-width: 600px; margin: 0 auto; }
-        .form-group input, .form-group textarea { width: 100%; background: var(--bg-card); border: 1px solid var(--border); padding: 12px 16px; border-radius: 8px; color: #fff; outline: none; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+        .hero-contact a:hover {
+            color: var(--accent);
+        }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; }
+        /* Metrics Grid */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .metric-card h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Section Layout */
+        section {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Cards & Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body p, .card-body ul {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .card-body ul {
+            padding-left: 1.2rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: #eff6ff;
+            color: var(--accent);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Timeline / Education */
+        .timeline-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Skills Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .skills-table th, .skills-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skills-table th {
+            background: #f1f5f9;
+            color: var(--primary);
+            font-weight: 600;
+            width: 30%;
+        }
+
+        .skills-table tr:last-child td, .skills-table tr:last-child th {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .skills-table th, .skills-table td { display: block; width: 100%; }
+            .skills-table th { background: transparent; padding-bottom: 0.25rem; color: var(--accent); }
+            .skills-table td { padding-top: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">Khawla <span>Arfaoui</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#experience">Parcours</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn" class="btn-nav">Contact PFE</a>
+    <nav>
+        <div class="logo">Khawla Arfaoui</div>
+        <ul class="nav-links">
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#experiences">Expériences</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#engagements">Engagements</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Khawla Arfaoui</h1>
+        <h2>Étudiante Ingénieure Génie Électrique | Systèmes Embarqués, IA Embarquée & VLSI</h2>
+        <p>Spécialisée en systèmes embarqués (STM32, BeagleBone, FPGA, RISC-V) et conception microélectronique. Expérience éprouvée dans le déploiement de modèles d'IA optimisés sur cibles à ressources contraintes (NPU, CPU RISC-V).</p>
+        <div class="hero-contact">
+            <span><i class="fa-solid fa-location-dot"></i> Tunis, Tunisie</span>
+            <a href="tel:+21624453574"><i class="fa-solid fa-phone"></i> +216 24 453 574</a>
+            <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         </div>
     </header>
 
-    <!-- Hero / Home Section -->
-    <section id="about">
-        <div class="hero-grid">
-            <div>
-                <h1 class="hero-title">
-                    Génie Électrique <br>
-                    <span class="gradient-text">× IA Embarquée & Edge AI</span>
-                </h1>
-                <p class="hero-desc">
-                    Élève ingénieure à l'<strong>École Nationale d'Ingénieurs de Tunis (ENIT)</strong>. Mon profil combine la théorie des systèmes énergétiques avec la pratique de l'accélération matérielle, de la compilation NPU et des architectures <strong>RISC-V</strong>.
-                </p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code-branch"></i> Explorer Projets</a>
-                    <a href="https://linkedin.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <!-- Profile Card Right -->
-            <div class="profile-card">
-                <div class="profile-img-container">
-                    <img src="avatar.jpg" alt="Khawla Arfaoui" class="profile-img" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Khawla+Arfaoui&background=0284c7&color=fff&size=128';">
-                </div>
-                <h2>Khawla Arfaoui</h2>
-                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-top: 4px;">ÉLÈVE INGÉNIEURE EN GÉNIE ÉLECTRIQUE</p>
-                <p style="color: var(--text-muted); font-size: 0.8rem;">Recherche Stage de Fin d'Études (PFE 2026)</p>
-
-                <div class="metrics-grid">
-                    <div>
-                        <span class="metric-val">12.14</span>
-                        <span class="metric-lbl">FPS (C906)</span>
-                    </div>
-                    <div>
-                        <span class="metric-val">78.53</span>
-                        <span class="metric-lbl">FPS (NPU)</span>
-                    </div>
-                    <div>
-                        <span class="metric-val">2026</span>
-                        <span class="metric-lbl">Diplôme ENIT</span>
-                    </div>
-                </div>
-
-                <div style="font-size: 0.85rem; text-align: left; color: var(--text-muted);">
-                    <p><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Tunis, Tunisie</p>
-                    <p><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> khawla.arfaoui@etudiant-enit.utm.tn</p>
-                    <p><i class="fa-solid fa-phone" style="color:var(--primary)"></i> +216 24 453 574</p>
-                </div>
-            </div>
+    <div class="metrics">
+        <div class="metric-card">
+            <h3>18.9 ms</h3>
+            <p>Temps d'inférence CNN sur NPU RISC-V (52.9 FPS)</p>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Compétences Techniques</h2>
-        <p class="section-subtitle">Aperçu structuré du stack d'ingénierie combinant logiciel, réseaux de neurones et matériel.</p>
-        
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-microchip"></i> Embedded AI & Hardware</h3>
-                <div class="tag-list">
-                    <span class="tag">BeagleV-Ahead</span>
-                    <span class="tag">TH1520 SoC</span>
-                    <span class="tag">NPU Acceleration</span>
-                    <span class="tag">RISC-V (C906/C910)</span>
-                    <span class="tag">RVV 0.7.1</span>
-                    <span class="tag">HHB Toolchain</span>
-                    <span class="tag">CSI-NN2</span>
-                    <span class="tag">SHL Libraries</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-brain"></i> Machine / Deep Learning</h3>
-                <div class="tag-list">
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">TensorFlow / Keras</span>
-                    <span class="tag">ONNX</span>
-                    <span class="tag">Quantization INT8</span>
-                    <span class="tag">CNN Architectures</span>
-                    <span class="tag">Time-Series Processing</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-terminal"></i> Software & Embedded Linux</h3>
-                <div class="tag-list">
-                    <span class="tag">Python</span>
-                    <span class="tag">C / C++</span>
-                    <span class="tag">RISC-V GCC</span>
-                    <span class="tag">Linux / Yocto</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Bash</span>
-                    <span class="tag">Cross-Compilation</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-bolt"></i> Electrical & Energy Systems</h3>
-                <div class="tag-list">
-                    <span class="tag">Non-Intrusive Load Monitoring (NILM)</span>
-                    <span class="tag">Smart Grids</span>
-                    <span class="tag">Prévision de Charge</span>
-                    <span class="tag">Systèmes de Puissance</span>
-                </div>
-            </div>
+        <div class="metric-card">
+            <h3>6+</h3>
+            <p>Projets Académiques & SoC/FPGA</p>
         </div>
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section id="projects">
-        <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> Projets Majeurs</h2>
-        <p class="section-subtitle">Déploiements réels, expérimentations matérielles et métriques de performance obtenues.</p>
-
-        <div class="projects-grid">
-            
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div>
-                    <span class="project-tag">Projet Phare — Embedded AI</span>
-                    <h3 class="project-title">Déploiement & Optimisation IA sur BeagleV-Ahead (TH1520)</h3>
-                    <p class="project-desc">Étude complète du SoC RISC-V T-Head TH1520, environnement Yocto Linux, compilation croisée et déploiement via la chaîne d'outils HHB/CSI-NN2.</p>
-                    <div class="metric-badge">Cœurs C910/C906 • NPU VHA • RVV Vector Ext.</div>
-                </div>
-                <button class="btn btn-secondary" onclick="openModal('p1')">Détails du Projet <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div>
-                    <span class="project-tag">Benchmark Matériel</span>
-                    <h3 class="project-title">CNN Classification de Formes sur Cœur RISC-V C906</h3>
-                    <p class="project-desc">Inférence directe d'un CNN (1x64x64x1) sans NPU sur le processeur RISC-V. Debugging avancé de segmentation faults et incompatibilités INT8/float.</p>
-                    <div class="metric-badge">Execution: 82.38 ms | FPS: 12.14</div>
-                </div>
-                <button class="btn btn-secondary" onclick="openModal('p2')">Détails du Projet <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div>
-                    <span class="project-tag">Energy AI & Deep Learning</span>
-                    <h3 class="project-title">NILM: Deep Learning for Energy Load Monitoring</h3>
-                    <p class="project-desc">Identification binaire de l'état des charges électriques à partir du dataset Plegma (fenêtres temporelles de 128 points, 332k paires de données).</p>
-                    <div class="metric-badge">Model: PyTorch/ONNX | Dataset: Plegma</div>
-                </div>
-                <button class="btn btn-secondary" onclick="openModal('p3')">Détails du Projet <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <div>
-                    <span class="project-tag">NPU Acceleration</span>
-                    <h3 class="project-title">Déploiement du Réseau NILM sur le NPU TH1520</h3>
-                    <p class="project-desc">Pipeline complet ONNX → HHB → NPU. Exécution accélérée sur le driver `/dev/vha0` et analyse expérimentale des warnings d'alignement mémoire CPU.</p>
-                    <div class="metric-badge">Execution: 12.73 ms | FPS: 78.53</div>
-                </div>
-                <button class="btn btn-secondary" onclick="openModal('p4')">Détails du Projet <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card">
-                <div>
-                    <span class="project-tag">Exploration & Recherche</span>
-                    <h3 class="project-title">Energy Consumption Forecasting (Short-Term)</h3>
-                    <p class="project-desc">Exploration de réseaux CNN et Physics-Informed Neural Networks (PINN) appliqués à la prévision de charge court terme dans les Smart Grids.</p>
-                    <div class="metric-badge">Research Prototype | Smart Grid AI</div>
-                </div>
-                <button class="btn btn-secondary" onclick="openModal('p5')">Détails du Projet <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Experience & Education -->
-    <section id="experience">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <div>
-                <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Expérience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Juin 2025 (1 mois)</div>
-                        <h3 style="font-size: 1.05rem;">Stage Industriel — STEG</h3>
-                        <p style="color: var(--primary); font-size: 0.85rem;">Secteur Distribution & Réseaux Électriques</p>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">Immersion industrielle dans le réseau de distribution électrique national. Compréhension des enjeux opérationnels du réseau, préparant la jonction avec le Smart Grid et l'IA.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Formation</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 — 2026 (En cours)</div>
-                        <h3 style="font-size: 1.05rem;">Diplôme d'Ingénieur en Génie Électrique</h3>
-                        <p style="color: var(--primary); font-size: 0.85rem;">École Nationale d'Ingénieurs de Tunis (ENIT)</p>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">Spécialisation en Systèmes Énergétiques, IA Embarquée, Traitement du Signal et Contrôle Intelligents.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact">
-        <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-paper-plane"></i> Me Contacter</h2>
-        <p class="section-subtitle" style="text-align: center;">Disponible pour des opportunités de Stage de Fin d'Études (PFE).</p>
-
-        <form class="contact-form" action="https://formspree.io/f/your_form_id" method="POST">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Votre Nom / Entreprise" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Votre Adresse Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" rows="5" placeholder="Votre Message (Offre PFE, Collaboration...)" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="justify-content: center;">Envoyer le Message</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Khawla Arfaoui — Portfolio d'Ingénierie. Déployé sur GitHub Pages.</p>
-    </footer>
-
-    <!-- MODALES DE DETAILS DES PROJETS -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <div id="modal-body" class="modal-body"></div>
+        <div class="metric-card">
+            <h3>2</h3>
+            <p>Axe d'expertise : IA Embarquée & Microélectronique</p>
         </div>
     </div>
 
-    <script>
-        const projectDetails = {
-            p1: {
-                title: "Déploiement et optimisation IA sur BeagleV-Ahead (TH1520)",
-                body: `
-                    <h4>Architecture & Plateforme Matérielle</h4>
-                    <p>Travail approfondi sur la carte BeagleV-Ahead Rev 1.0 intégrant le SoC RISC-V T-Head TH1520 (cœurs CPU C910/C906, NPU dédié et extensions vectorielles RVV 0.7.1).</p>
-                    
-                    <h4>Workflow & Outils Utilisés</h4>
-                    <div class="workflow-box">PyTorch / Keras → Export ONNX → Compilation HHB → Runtime CSI-NN2 / SHL → Exécution BeagleV-Ahead</div>
-                    
-                    <h4>Environnement & Stack</h4>
-                    <p>Cross-compilation sous Linux/Yocto/Docker via RISC-V GCC, gestion des drivers VHA et bibliothèques d'accélération d'inférence SHL/NNA.</p>
-                `
-            },
-            p2: {
-                title: "CNN Classification de Formes sur Cœur RISC-V C906",
-                body: `
-                    <h4>Objectif & Structure du Modèle</h4>
-                    <p>Déploiement d'un réseau CNN léger pour la reconnaissance de formes (cercle, carré, rectangle) avec une entrée 1x64x64x1 sur le processeur C906.</p>
-                    
-                    <h4>Résultats Réels de Benchmark</h4>
-                    <div class="workflow-box">Run graph execution time = 82.38714 ms
-FPS = 12.14</div>
-                    
-                    <h4>Debugging & Ingestion d'Ingénierie</h4>
-                    <p>Résolution de segmentation faults, d'incompatibilités d'opérateurs (ex: Squeeze), et de conflits entre entrées float et modèles quantifiés INT8 en environnement de cross-compilation x86 → RISC-V.</p>
-                `
-            },
-            p3: {
-                title: "NILM: Deep Learning for Non-Intrusive Load Monitoring",
-                body: `
-                    <h4>Contexte Énergétique & Dataset Plegma</h4>
-                    <p>Identification de l'état d'une charge électrique (classification binaire) à partir de mesures de consommation avec des fenêtres temporelles de 128 points.</p>
-                    
-                    <h4>Dimensions & Données</h4>
-                    <div class="workflow-box">Train X: 332,765 × 128 | Train Y: 332,765
-Validation & Test: 71,295 × 128 (Float32)</div>
-                    
-                    <h4>Formats & Modèles Expérimentés</h4>
-                    <p>Mise en place et conversion de modèles sous formats PyTorch (.pt) et ONNX simplifiés (nilm_ac1_model.onnx) pour la chaîne d'embarquabilité.</p>
-                `
-            },
-            p4: {
-                title: "Deployment of a Lightweight Neural Network on TH1520 NPU",
-                body: `
-                    <h4>Inférence Accélérée Matérielle</h4>
-                    <p>Conversion du modèle NILM pour exécution directe sur le NPU de la carte via les drivers VHA (/dev/vha0) et la suite de bibliothèques (libshl_th1520, libnnasession).</p>
-                    
-                    <h4>Performance Observée</h4>
-                    <div class="workflow-box">Input: 1 × 1 × 1 × 128 | Output: 1 × 2
-Run graph execution time = 12.73333 ms
-FPS = 78.53</div>
-                    
-                    <h4>Analyse Expérimentale Honnête</h4>
-                    <p>Bien que le graphe d'inférence ait produit des résultats mesurables, le runtime a généré l'avertissement : <em>"Importing 128 bytes of CPU memory has failed (wrong memory alignment)"</em>, indiquant la nécessité d'une optimisation de la gestion mémoire en phase d'industrialisation.</p>
-                `
-            },
-            p5: {
-                title: "Energy Consumption Forecasting",
-                body: `
-                    <h4>Exploration Stratégique Smart Grid</h4>
-                    <p>Recherche appliquée sur l'utilisation des réseaux de neurones (CNN et PINN — Physics-Informed Neural Networks) pour la prévision de consommation énergétique à court terme.</p>
-                    
-                    <h4>Positionnement</h4>
-                    <p>Projet d'exploration et de preuve de concept visant à relier la modélisation théorique des réseaux électriques aux contraintes d'exécution sur plateformes embarquées.</p>
-                `
-            }
-        };
+    <section id="parcours">
+        <h2 class="section-title">🎓 Parcours Académique</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <h3>Cycle Ingénieur en Génie Électrique (2AGE2)</h3>
+                <span class="timeline-date">2024 – Présent</span>
+            </div>
+            <p><strong>ENIT – École Nationale d'Ingénieurs de Tunis</strong></p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+                Spécialisation en systèmes embarqués, conception microélectronique/VLSI, Deep Learning, systèmes temps réel, microcontrôleurs avancés, électronique de puissance et automatique.
+            </p>
+        </div>
 
-        function openModal(id) {
-            const data = projectDetails[id];
-            if (data) {
-                document.getElementById('modal-body').innerHTML = `<h3>${data.title}</h3><hr style="border-color:var(--border);margin:12px 0;">${data.body}`;
-                document.getElementById('project-modal').style.display = 'block';
-            }
-        }
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <h3>Cycle Préparatoire aux Études d'Ingénieurs (Filière MP)</h3>
+                <span class="timeline-date">2022 – 2024</span>
+            </div>
+            <p><strong>IPEIM El Manar, Tunisie</strong></p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+                Formation intensive en Mathématiques et Physique.
+            </p>
+        </div>
 
-        function closeModal() {
-            document.getElementById('project-modal').style.display = 'none';
-        }
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <h3>Baccalauréat Section Mathématiques</h3>
+                <span class="timeline-date">2022</span>
+            </div>
+            <p><strong>Mention Bien</strong></p>
+        </div>
+    </section>
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('project-modal');
-            if (event.target == modal) { closeModal(); }
-        }
-    </script>
+    <section id="experiences">
+        <h2 class="section-title">💼 Expérience Professionnelle</h2>
+        
+        <div class="grid">
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <div class="timeline-header">
+                        <h3 class="card-title">Stage d'Ingénieur – Déploiement d'IA & Systèmes Embarqués</h3>
+                        <span class="timeline-date">Été 2026 (3 mois)</span>
+                    </div>
+                    <div class="card-subtitle">ACTIA Engineering Services Powerlab, Tunisie</div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Portage d'un pipeline ONNX HHB/TVM → binaire RISC-V sur carte BeagleV-Ahead (SoC T-Head TH1520, cœurs RISC-V C906/C910, NPU).</li>
+                        <li>Diagnostic matériel bas niveau sous Ubuntu et migration vers une image Yocto Linux pour rétablir les drivers du NPU.</li>
+                        <li>Entraînement, quantification et déploiement d'un CNN 1D pour la détection ON/OFF de climatiseur (NILM) sur NPU : 18,9 ms d'inférence (52,9 FPS), F1-score de 0,88.</li>
+                        <li>Exploration des extensions vectorielles RISC-V (RVV 0.7.1) et contrôle d'affinité des cœurs CPU (taskset, pthread_setaffinity_np).</li>
+                        <li>Déploiement en cours d'un modèle de prévision énergétique (dataset Plegma) et rédaction du rapport technique en LaTeX.</li>
+                    </ul>
+                </div>
+                <div class="tags">
+                    <span class="tag">RISC-V</span>
+                    <span class="tag">NPU</span>
+                    <span class="tag">Yocto Linux</span>
+                    <span class="tag">ONNX</span>
+                    <span class="tag">HHB/TVM</span>
+                    <span class="tag">PyTorch/Keras</span>
+                    <span class="tag">C</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <div class="timeline-header">
+                        <h3 class="card-title">Stage Ouvrier</h3>
+                        <span class="timeline-date">Juillet 2025</span>
+                    </div>
+                    <div class="card-subtitle">Société Tunisienne de l'Électricité et du Gaz (STEG), Tunisie</div>
+                </div>
+                <div class="card-body">
+                    <p>Observation des installations électriques industrielles, opérations de maintenance préventive et analyse de plans électriques.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">Installations Électriques</span>
+                    <span class="tag">Maintenance Préventive</span>
+                    <span class="tag">Plans Électriques</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets">
+        <h2 class="section-title">🚀 Projets Académiques & Techniques</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Coprocesseur Détection de Contours (SoC)</h3>
+                    <div class="card-subtitle">Bureau d'Études | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Conception d'un coprocesseur matériel dédié au traitement d'image et intégration avec un processeur RISC-V au sein d'un SoC hétérogène.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">HDL</span>
+                    <span class="tag">RISC-V</span>
+                    <span class="tag">SoC</span>
+                    <span class="tag">Traitement d'image</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Microcontrôleur RISC-V 32 bits sur FPGA</h3>
+                    <div class="card-subtitle">Bureau d'Études | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Conception du chemin de données et de l'unité de contrôle en HDL, validation par simulation et implémentation sur carte FPGA.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">HDL</span>
+                    <span class="tag">FPGA</span>
+                    <span class="tag">RISC-V</span>
+                    <span class="tag">Simulation</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Conception Circuits VLSI (ADC)</h3>
+                    <div class="card-subtitle">Bureau d'Études | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Conception mixte (analogique/numérique) d'un ADC et d'un comparateur sur technologies fines. Analyse de la vitesse, précision et consommation.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">CAO Microélectronique</span>
+                    <span class="tag">Conception Mixte</span>
+                    <span class="tag">VLSI</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Module Noyau Linux – BeagleBone Black</h3>
+                    <div class="card-subtitle">Projet Système | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Développement d'un module noyau en C pour la mesure de vitesse via interruptions GPIO, Device Tree Overlay (.dts) et interface /proc.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C</span>
+                    <span class="tag">Linux Kernel</span>
+                    <span class="tag">Device Tree</span>
+                    <span class="tag">BeagleBone</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Mesure de Déphasage STM32F407</h3>
+                    <div class="card-subtitle">Systèmes Embarqués | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Génération de signaux sinusoïdaux via DAC/DMA et acquisition ADC double-canal temps réel avec validation à l'oscilloscope.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">STM32CubeIDE</span>
+                    <span class="tag">HAL/LL</span>
+                    <span class="tag">ADC/DAC</span>
+                    <span class="tag">DMA</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Barrière Infrarouge avec Comptage</h3>
+                    <div class="card-subtitle">Carte Électronique | 2024 – 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Création d'une carte avec NE555 (38 kHz), récepteur CD4093 et affichage 7 segments CD4033. Simulation PSPICE et routage PCB sur Eagle.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">Eagle PCB</span>
+                    <span class="tag">PSPICE</span>
+                    <span class="tag">Électronique</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences">
+        <h2 class="section-title">⚡ Compétences Techniques</h2>
+        
+        <table class="skills-table">
+            <tr>
+                <th>IA Embarquée</th>
+                <td>PyTorch, Keras, ONNX, HHB/TVM, quantification, CSI-NN2, déploiement CPU & NPU</td>
+            </tr>
+            <tr>
+                <th>Conception Microélectronique & FPGA</th>
+                <td>VLSI analogique/numérique, VHDL, Verilog, SoC hétérogènes, RISC-V softcore, VIVADO, Efinity, ModelSim</td>
+            </tr>
+            <tr>
+                <th>Systèmes Embarqués & Linux</th>
+                <td>STM32F4 (HAL/LL), BeagleBone Black, BeagleV-Ahead, Yocto Linux, modules noyau Linux, Device Tree</td>
+            </tr>
+            <tr>
+                <th>Électronique & PCB</th>
+                <td>Routage PCB (Eagle), PSPICE, instrumentation (Oscilloscope), circuits analogiques et numériques</td>
+            </tr>
+            <tr>
+                <th>Langages & Outils</th>
+                <td>C, C++, Python, VHDL/Verilog, MATLAB/Simulink, Docker, Git, VS Code, STM32CubeIDE</td>
+            </tr>
+            <tr>
+                <th>Langues</th>
+                <td>Arabe (Natif), Français (B2), Anglais (B2)</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="engagements">
+        <h2 class="section-title">👥 Engagements & Intérêts</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Fablab ENIT</h3>
+                    <div class="card-subtitle">Membre Actif | 2025 – Présent</div>
+                </div>
+                <div class="card-body">
+                    <p>Participation à l'événement <strong>Maker Faire</strong>. Pratique régulière du prototypage rapide et du travail en équipe autour de projets électroniques et embarqués.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Centres d'Intérêt</h3>
+                    <div class="card-subtitle">Passions & Activités</div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Échecs et jeux de stratégie</li>
+                        <li>Internet des Objets (IoT) & Robotique</li>
+                        <li>Activités sportives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Khawla Arfaoui. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
