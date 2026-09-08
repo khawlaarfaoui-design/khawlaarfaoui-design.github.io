@@ -5,25 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khawla Arfaoui | Portfolio Ingénieure Génie Électrique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a1128;
-            --bg-dark-card: #1c2541;
             --primary: #0f172a;
-            --accent: #0077ff;
-            --accent-glow: #00b4d8;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
             --bg-light: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #334155;
             --text-muted: #64748b;
             --border: #e2e8f0;
+
+            /* hero — dark circuit-board palette */
+            --ink: #0a0f1f;
+            --ink-2: #101a33;
+            --ink-3: #16223f;
+            --cyan: #4fd1ff;
+            --cyan-dim: #38bdf8;
+            --ink-text: #cbd5e1;
+            --ink-text-dim: #8697b3;
+        }
+
+        .hero, .hero * , nav, nav * {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-headline, .logo, .hero-photo-name {
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -33,172 +50,201 @@
             line-height: 1.6;
         }
 
-        /* Top Bar / Brand Header */
-        .top-brand {
-            background: #060b19;
-            padding: 1.2rem 3rem 0;
-            color: #fff;
-            display: flex;
-            align-items: center;
-        }
-
-        .top-brand .brand-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #ffffff;
-        }
-
-        /* Navigation Style Pills */
+        /* Navigation */
         nav {
-            background: #060b19;
-            padding: 1rem 3rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 31, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 0.9rem 2rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f1f5f9;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.75rem;
+            align-items: center;
+            gap: 0.4rem;
             list-style: none;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.4rem;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #94a3b8;
+            color: var(--ink-text);
             font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            transition: color 0.2s, background 0.2s;
         }
 
-        .nav-links a.active, .nav-links a:hover {
-            background: var(--accent);
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(0, 119, 255, 0.5);
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        .btn-contact-top {
-            background: linear-gradient(135deg, #0077ff, #00b4d8);
-            color: #fff !important;
-            border-radius: 30px !important;
-            font-weight: 600 !important;
-            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
-        }
-
-        /* Hero Section Redesigned (Dark Modern Theme) */
-        .hero-section {
-            background: radial-gradient(circle at 80% 20%, #152238 0%, #060b19 100%);
-            color: #ffffff;
-            padding: 2rem 3rem 5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 3rem;
-            min-height: 80vh;
-        }
-
-        .hero-left {
-            flex: 1.2;
-            max-width: 650px;
-        }
-
-        .hero-left .tagline {
-            display: inline-block;
-            color: #38bdf8;
-            font-size: 0.95rem;
+        .nav-links li:first-child a {
+            background: var(--cyan-dim);
+            color: #06192b;
             font-weight: 600;
-            margin-bottom: 1rem;
         }
 
-        .hero-left h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .nav-links li:first-child a:hover {
+            background: var(--cyan);
+            color: #06192b;
         }
 
-        .hero-left p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.7;
+        .nav-cta {
+            margin-left: 0.5rem;
+            padding: 0.55rem 1.2rem !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            background: transparent !important;
+            color: #fff !important;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--cyan) !important;
+            color: var(--cyan) !important;
+            background: rgba(79, 209, 255, 0.08) !important;
+        }
+
+        /* Hero Section — dark, two-column */
+        .hero {
+            background: radial-gradient(ellipse 900px 500px at 12% -10%, #12244a 0%, transparent 60%), var(--ink);
+            padding: 7.5rem 2rem 5rem;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-role {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--ink-text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-role i { color: var(--cyan); }
+
+        .hero-headline {
+            font-size: 3rem;
+            line-height: 1.08;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-headline .accent-line {
+            color: var(--cyan);
+        }
+
+        .hero p.hero-lede {
+            max-width: 520px;
+            color: var(--ink-text);
+            font-size: 1.02rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
             margin-bottom: 2rem;
         }
 
-        .hero-badges {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .badge-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
+        .hero-chip {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            min-width: 260px;
+            gap: 0.7rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
         }
 
-        .badge-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--accent);
+        .hero-chip i {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 8px;
+            background: rgba(79, 209, 255, 0.12);
+            color: var(--cyan);
+            font-size: 0.9rem;
+        }
+
+        .hero-chip div strong {
+            display: block;
+            color: #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .hero-chip div span {
+            color: var(--ink-text-dim);
+            font-size: 0.78rem;
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .hero-contact a, .hero-contact span {
+            color: var(--ink-text);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #fff;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
-        .badge-text h4 {
-            font-size: 0.95rem;
-            color: #fff;
+        .hero-contact a:hover {
+            color: var(--cyan);
         }
 
-        .badge-text p {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin: 0;
-        }
-
-        /* Hero Right Card */
-        .hero-right {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-card {
-            background: #ffffff;
-            color: var(--text-main);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            width: 100%;
-            max-width: 380px;
+        /* Right column — photo card */
+        .hero-photo-card {
+            background: var(--ink-2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 1.75rem;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             position: relative;
         }
 
-        .profile-img-wrapper {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 1.5rem;
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--cyan-dim);
+            padding: 4px;
+            background: var(--ink-2);
+            margin: 0 auto 1.1rem;
+            overflow: hidden;
         }
 
         .profile-img {
@@ -206,98 +252,173 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid var(--accent);
         }
 
-        .school-pill {
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: #ffffff;
-            padding: 0.3rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0, 119, 255, 0.3);
+        .hero-photo-badge {
+            display: inline-block;
+            background: var(--cyan-dim);
+            color: #06192b;
+            font-weight: 600;
+            font-size: 0.78rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 0.9rem;
         }
 
-        .profile-card h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-            font-weight: 700;
+        .hero-photo-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 0.25rem;
         }
 
-        .profile-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
+        .hero-photo-role {
+            color: var(--ink-text-dim);
+            font-size: 0.88rem;
+            margin-bottom: 1.2rem;
         }
 
-        .profile-contacts {
+        .hero-photo-stats {
             display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            font-size: 0.85rem;
-            text-align: left;
-            background: #f8fafc;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
+            justify-content: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1rem;
         }
 
-        .profile-contacts a, .profile-contacts span {
+        .hero-photo-stats div {
+            flex: 0 0 auto;
+        }
+
+        .hero-photo-stats strong {
+            display: block;
+            color: var(--cyan);
+            font-size: 1.05rem;
+        }
+
+        .hero-photo-stats span {
+            color: var(--ink-text-dim);
+            font-size: 0.72rem;
+        }
+
+        @media (max-width: 860px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+            .hero-photo-card {
+                order: -1;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .hero-headline {
+                font-size: 2.3rem;
+            }
+        }
+
+        /* About / personality section */
+        .about-section {
+            background: #fbf7ef;
+            padding: 5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-eyebrow {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-quote {
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+            font-size: 1.9rem;
+            line-height: 1.35;
+            font-weight: 600;
+            color: var(--primary);
+            max-width: 720px;
+            margin-bottom: 2.2rem;
+            position: relative;
+            padding-left: 1.4rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .about-text {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-text p {
+            max-width: 46ch;
             color: var(--text-main);
-            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .about-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.75rem;
+        }
+
+        .about-trait {
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
         }
 
-        .profile-contacts i {
+        .about-trait:hover {
+            border-color: var(--accent);
+        }
+
+        .about-trait i {
             color: var(--accent);
-            width: 16px;
+            font-size: 1rem;
         }
 
-        /* Metrics Bar Below Hero */
-        .metrics-bar {
-            max-width: 1100px;
-            margin: -2rem auto 4rem;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
+        @media (max-width: 700px) {
+            .about-text { grid-template-columns: 1fr; }
+            .about-quote { font-size: 1.5rem; }
         }
-
-        .metrics-grid {
+        .metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
-            background: #ffffff;
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
         }
 
         .metric-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
             text-align: center;
         }
 
         .metric-card h3 {
             font-size: 2rem;
             color: var(--accent);
-            font-weight: 800;
+            margin-bottom: 0.25rem;
         }
 
         .metric-card p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        /* Sections General */
+        /* Section Layout */
         section {
             max-width: 1100px;
             margin: 0 auto 4rem;
@@ -308,7 +429,7 @@
             font-size: 1.75rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
-            border-bottom: 3px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
             display: inline-block;
             padding-bottom: 0.25rem;
         }
@@ -323,7 +444,7 @@
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
@@ -383,7 +504,7 @@
         .timeline-item {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.25rem 1.5rem;
             margin-bottom: 1rem;
         }
@@ -406,7 +527,7 @@
             width: 100%;
             border-collapse: collapse;
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
         }
@@ -424,6 +545,10 @@
             width: 30%;
         }
 
+        .skills-table tr:last-child td, .skills-table tr:last-child th {
+            border-bottom: none;
+        }
+
         /* Footer */
         footer {
             background: var(--primary);
@@ -438,94 +563,114 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 992px) {
-            .hero-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-left h1 { font-size: 2.5rem; }
-            .hero-badges { justify-content: center; }
-            nav { justify-content: center; }
-            .top-brand { justify-content: center; }
+        @media (max-width: 768px) {
+            .hero-headline { font-size: 2rem; }
+            .nav-links { display: none; }
+            .skills-table th, .skills-table td { display: block; width: 100%; }
+            .skills-table th { background: transparent; padding-bottom: 0.25rem; color: var(--accent); }
+            .skills-table td { padding-top: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Brand Name -->
-    <div class="top-brand">
-        <div class="brand-name">Khawla Arfaoui</div>
-    </div>
-
-    <!-- Navigation Bar Style Pills -->
     <nav>
+        <div class="logo">Khawla Arfaoui</div>
         <ul class="nav-links">
-            <li><a href="#parcours" class="active">Présentation</a></li>
-            <li><a href="#parcours">Formation</a></li>
-            <li><a href="#projets">Projets</a></li>
+            <li><a href="#hero">Présentation</a></li>
+            <li><a href="#apropos">Qui suis-je</a></li>
+            <li><a href="#parcours">Parcours</a></li>
             <li><a href="#experiences">Expériences</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#competences">Compétences</a></li>
             <li><a href="#engagements">Engagements</a></li>
-            <li><a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn" class="btn-contact-top"><i class="fa-solid fa-paper-plane"></i> Me Contacter</a></li>
+            <li><a class="nav-cta" href="mailto:khawla.arfaoui@etudiant-enit.utm.tn"><i class="fa-solid fa-paper-plane"></i> Me contacter</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section avec style visuel moderne -->
-    <header class="hero-section">
-        <div class="hero-left">
-            <span class="tagline"><i class="fa-solid fa-bolt"></i> Ingénieure en Génie Électrique & Systèmes Embarqués</span>
-            <h1>Concevoir des Solutions Embarquées & IA Avancées</h1>
-            <p>Spécialisée dans les architectures matérielles (STM32, FPGA, RISC-V), la microélectronique VLSI et l'optimisation de modèles de Deep Learning sur cibles embarquées contraintes.</p>
-            
-            <div class="hero-badges">
-                <div class="badge-card">
-                    <div class="badge-icon"><i class="fa-solid fa-microchip"></i></div>
-                    <div class="badge-text">
-                        <h4>Systèmes Embarqués & FPGA</h4>
-                        <p>Architecture RISC-V, STM32 & VHDL</p>
+    <header class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="hero-role"><i class="fa-solid fa-microchip"></i> Étudiante Ingénieure — Génie Électrique</p>
+                <h1 class="hero-headline">Concevoir<br><span class="accent-line">l'embarqué</span><br>de demain</h1>
+                <p class="hero-lede">Ingénieure en devenir passionnée par les systèmes embarqués et l'IA embarquée. Je conçois des solutions qui vont du silicium jusqu'au modèle d'IA déployé, pour construire des systèmes intelligents et efficaces.</p>
+
+                <div class="hero-chip-row">
+                    <div class="hero-chip">
+                        <i class="fa-solid fa-microchip"></i>
+                        <div>
+                            <strong>Systèmes Embarqués</strong>
+                            <span>STM32, FPGA, RISC-V</span>
+                        </div>
+                    </div>
+                    <div class="hero-chip">
+                        <i class="fa-solid fa-brain"></i>
+                        <div>
+                            <strong>IA Embarquée</strong>
+                            <span>Déploiement CPU &amp; NPU</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="hero-right">
-            <div class="profile-card">
-                <div class="profile-img-wrapper">
-                    <!-- Remplacez 'photo.jpg' par le lien ou chemin de votre photo -->
-                    <img src="photo.jpg" alt="Khawla Arfaoui" class="profile-img" onerror="this.src='https://via.placeholder.com/180?text=KA'">
-                    <span class="school-pill">ENIT Tunis</span>
-                </div>
-                <h2>Khawla Arfaoui</h2>
-                <p>Systèmes Embarqués & Microélectronique</p>
-                
-                <div class="profile-contacts">
+                <div class="hero-contact">
                     <span><i class="fa-solid fa-location-dot"></i> Tunis, Tunisie</span>
                     <a href="tel:+21624453574"><i class="fa-solid fa-phone"></i> +216 24 453 574</a>
                     <a href="mailto:khawla.arfaoui@etudiant-enit.utm.tn"><i class="fa-solid fa-envelope"></i> Email</a>
-                    <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="hero-photo-card">
+                <div class="profile-img-container">
+                    <img src="52889ed3-17f9-4ae3-949f-6818b152aca1.jpg" alt="Khawla Arfaoui" class="profile-img" onerror="this.src='https://via.placeholder.com/160/101a33/4fd1ff?text=KA'">
+                </div>
+                <span class="hero-photo-badge">ENIT</span>
+                <div class="hero-photo-name">Khawla Arfaoui</div>
+                <p class="hero-photo-role">Systèmes Embarqués &amp; IA Embarquée</p>
+                <div class="hero-photo-stats">
+                    <div>
+                        <strong>12+</strong>
+                        <span>Projets académiques</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Metrics Bar -->
-    <div class="metrics-bar">
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <h3>18.9 ms</h3>
-                <p>Temps d'inférence CNN sur NPU RISC-V</p>
+    <section class="about-section" id="apropos">
+        <div class="about-inner">
+            <p class="about-eyebrow">Qui suis-je</p>
+            <p class="about-quote">Ce qui m'anime, c'est ce moment précis où un signal électrique devient une décision intelligente — et j'aime construire ce moment de mes propres mains.</p>
+            <div class="about-text">
+                <p>J'ai atterri en génie électrique un peu par curiosité têtue : après une prépa MP où j'aimais surtout comprendre pourquoi les choses marchent, j'ai voulu aller voir de plus près là où le matériel rencontre l'intelligence — un microcontrôleur, une puce, un modèle qui tourne enfin sur un vrai circuit plutôt que dans un notebook.</p>
+                <p>Je suis du genre à reprendre un calcul trois fois plutôt que de laisser une incohérence passer — pendant un projet STM32, j'ai préféré revenir sur une erreur d'analyse et refaire la démarche proprement plutôt que de la contourner. Cette rigueur-là, je la garde partout où je travaille.</p>
+                <p>En dehors des cartes électroniques, je passe volontiers du temps sur un échiquier — la stratégie et la patience que ça demande se retrouvent, je trouve, dans la façon dont j'aborde un bug ou un système qui refuse de coopérer.</p>
+                <p>Au Fablab ENIT, j'aime surtout la partie « on essaie, ça rate, on recommence » entre plusieurs mains — c'est ce même esprit que j'ai retrouvé en participant à la Maker Faire, entourée de gens qui bricolent par passion.</p>
             </div>
-            <div class="metric-card">
-                <h3>12+</h3>
-                <p>Projets Académiques & Industriels</p>
+            <div class="about-traits">
+                <span class="about-trait"><i class="fa-solid fa-magnifying-glass"></i> Curieuse</span>
+                <span class="about-trait"><i class="fa-solid fa-check-double"></i> Rigoureuse</span>
+                <span class="about-trait"><i class="fa-solid fa-people-group"></i> Esprit d'équipe</span>
+                <span class="about-trait"><i class="fa-solid fa-chess-knight"></i> Stratège</span>
             </div>
-            <div class="metric-card">
-                <h3>2</h3>
-                <p>Axes d'expertise : IA Embarquée & VLSI</p>
-            </div>
+        </div>
+    </section>
+
+    <div class="metrics">
+        <div class="metric-card">
+            <h3>18.9 ms</h3>
+            <p>Temps d'inférence CNN sur NPU RISC-V (52.9 FPS)</p>
+        </div>
+        <div class="metric-card">
+            <h3>12+</h3>
+            <p>Projets Académiques, SoC/FPGA & Énergie</p>
+        </div>
+        <div class="metric-card">
+            <h3>2</h3>
+            <p>Axe d'expertise : IA Embarquée & Microélectronique</p>
         </div>
     </div>
 
-    <!-- Parcours Académique -->
     <section id="parcours">
         <h2 class="section-title">🎓 Parcours Académique</h2>
         
@@ -560,9 +705,8 @@
         </div>
     </section>
 
-    <!-- Expériences Professionnelles -->
     <section id="experiences">
-        <h2 class="section-title">💼 Expériences Professionnelles</h2>
+        <h2 class="section-title">💼 Expérience Professionnelle</h2>
         
         <div class="grid">
             <div class="card" style="grid-column: 1 / -1;">
@@ -579,6 +723,7 @@
                         <li>Diagnostic matériel bas niveau sous Ubuntu et migration vers une image Yocto Linux pour rétablir les drivers du NPU.</li>
                         <li>Entraînement, quantification et déploiement d'un CNN 1D pour la détection ON/OFF de climatiseur (NILM) sur NPU : 18,9 ms d'inférence (52,9 FPS), F1-score de 0,88.</li>
                         <li>Exploration des extensions vectorielles RISC-V (RVV 0.7.1) et contrôle d'affinité des cœurs CPU (taskset, pthread_setaffinity_np).</li>
+                        <li>Déploiement en cours d'un modèle de prévision énergétique (dataset Plegma) et rédaction du rapport technique en LaTeX.</li>
                     </ul>
                 </div>
                 <div class="tags">
@@ -589,6 +734,7 @@
                     <span class="tag">HHB/TVM</span>
                     <span class="tag">PyTorch/Keras</span>
                     <span class="tag">C</span>
+                    <span class="tag">Docker</span>
                 </div>
             </div>
 
@@ -607,16 +753,17 @@
                     <span class="tag">Installations Électriques</span>
                     <span class="tag">Maintenance Préventive</span>
                     <span class="tag">Plans Électriques</span>
+                    <span class="tag">Énergie Solaire</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projets -->
     <section id="projets">
         <h2 class="section-title">🚀 Projets Académiques & Techniques</h2>
         
         <div class="grid">
+            <!-- Projet Coprocesseur SoC -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Coprocesseur Détection de Contours (SoC)</h3>
@@ -629,9 +776,11 @@
                     <span class="tag">HDL</span>
                     <span class="tag">RISC-V</span>
                     <span class="tag">SoC</span>
+                    <span class="tag">Traitement d'image</span>
                 </div>
             </div>
 
+            <!-- Projet Microcontrôleur FPGA -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Microcontrôleur RISC-V 32 bits sur FPGA</h3>
@@ -644,9 +793,11 @@
                     <span class="tag">HDL</span>
                     <span class="tag">FPGA</span>
                     <span class="tag">RISC-V</span>
+                    <span class="tag">Simulation</span>
                 </div>
             </div>
 
+            <!-- Projet VLSI -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Conception Circuits VLSI (ADC)</h3>
@@ -662,54 +813,160 @@
                 </div>
             </div>
 
+            <!-- NOUVEAU : Contrôle Moteur STM32 -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Contrôle & Supervision Moteur STM32</h3>
                     <div class="card-subtitle">Systèmes Embarqués Avancés | 2025 – 2026</div>
                 </div>
                 <div class="card-body">
-                    <p>Système de régulation basé sur STM32F407 Discovery : implémentation d'un contrôleur PID, mesure tachymétrique via TIM3 (Input Capture), configuration au niveau registres.</p>
+                    <p>Système de régulation basé sur STM32F407 Discovery : implémentation d'un contrôleur PID, mesure tachymétrique via TIM3 (Input Capture), configuration des horloges et canaux ADC au niveau registres.</p>
                 </div>
                 <div class="tags">
                     <span class="tag">STM32F407</span>
                     <span class="tag">PID</span>
+                    <span class="tag">Timers / ADC</span>
                     <span class="tag">C / Registres</span>
                 </div>
             </div>
 
+            <!-- NOUVEAU : FPGA Efinix Trion -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">FPGA Efinix Trion & PCB Hardware</h3>
+                    <h3 class="card-title">Projet FPGA Efinix Trion & Intégration Matérielle</h3>
                     <div class="card-subtitle">Systèmes Numériques & PCB | 2025 – 2026</div>
                 </div>
                 <div class="card-body">
-                    <p>Intégration d'IP cores sur FPGA Efinix Trion T8 et interfaçage microcontrôleur. Réalisation pratique comprenant soudure, interfaces TX/RX et routage PCB.</p>
+                    <p>Intégration d'IP cores sur FPGA Efinix Trion T8 et interfaçage microcontrôleur. Réalisation pratique comprenant le soudage, les interfaces émetteur/récepteur et le routage PCB.</p>
                 </div>
                 <div class="tags">
                     <span class="tag">Efinix Trion T8</span>
                     <span class="tag">IP Cores</span>
                     <span class="tag">PCB</span>
+                    <span class="tag">Soudure & Hardware</span>
                 </div>
             </div>
 
+            <!-- NOUVEAU : Traitement de Signaux EMG -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Traitement de Signaux Biomédicaux EMG</h3>
                     <div class="card-subtitle">Traitement du Signal / MATLAB | 2025 – 2026</div>
                 </div>
                 <div class="card-body">
-                    <p>Filtrage d'artefacts et bruit secteur (50Hz), enveloppe RMS via Butterworth et extraction de descripteurs fréquentiels (MDF, MNF via FFT) sous MATLAB.</p>
+                    <p>Filtrage d'artefacts et bruit secteur (50Hz), enveloppe RMS via Butterworth basse-haut et extraction de descripteurs fréquentiels (MDF, MNF via FFT) pour la détection de fatigue musculaire.</p>
                 </div>
                 <div class="tags">
                     <span class="tag">MATLAB</span>
                     <span class="tag">FFT / Filtrage</span>
                     <span class="tag">EMG</span>
+                    <span class="tag">Traitement du Signal</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : PV Kairouan -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Dimensionnement PV Résidentiel (Kairouan)</h3>
+                    <div class="card-subtitle">Énergies Renouvelables | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Étude complète selon la norme UTE C 15-712-1 : analyse de consommation, dimensionnement champ PV (JKM400M-72H), protections DC/fusions, choix de l'onduleur Growatt et vérification des contraintes de tension.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">UTE C 15-712-1</span>
+                    <span class="tag">Growatt</span>
+                    <span class="tag">Photovoltaïque</span>
+                    <span class="tag">Dimensionnement DC</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Électronique de Puissance PSIM -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Simulation Électronique de Puissance</h3>
+                    <div class="card-subtitle">Projet Simulation | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Modélisation et étude de convertisseurs de puissance sous PSIM. Simulation fine des circuits analogiques et de conversion sous PSpice pour validation des comportements dynamiques.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">PSIM</span>
+                    <span class="tag">PSpice</span>
+                    <span class="tag">Conversion d'Énergie</span>
+                    <span class="tag">Électronique</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Réseaux Électriques PowerWorld -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Modélisation de Réseaux Électriques</h3>
+                    <div class="card-subtitle">Systèmes Électriques | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Analyse et simulation de réseaux électriques sous PowerWorld pour étudier le flux de puissance, la stabilité des lignes et le comportement des nœuds dans un système de puissance.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">PowerWorld</span>
+                    <span class="tag">Réseaux Électriques</span>
+                    <span class="tag">Flux de Puissance</span>
+                </div>
+            </div>
+
+            <!-- Module Noyau Linux -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Module Noyau Linux – BeagleBone Black</h3>
+                    <div class="card-subtitle">Projet Système | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Développement d'un module noyau en C pour la mesure de vitesse via interruptions GPIO, Device Tree Overlay (.dts) et interface /proc.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C</span>
+                    <span class="tag">Linux Kernel</span>
+                    <span class="tag">Device Tree</span>
+                    <span class="tag">BeagleBone</span>
+                </div>
+            </div>
+
+            <!-- Mesure Déphasage STM32 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Mesure de Déphasage STM32F407</h3>
+                    <div class="card-subtitle">Systèmes Embarqués | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Génération de signaux sinusoïdaux via DAC/DMA et acquisition ADC double-canal temps réel avec calcul de déphasage et validation à l'oscilloscope.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">STM32CubeIDE</span>
+                    <span class="tag">HAL/LL</span>
+                    <span class="tag">ADC/DAC</span>
+                    <span class="tag">DMA</span>
+                </div>
+            </div>
+
+            <!-- ML Classification Diabète -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Régression Logistique From-Scratch (ML)</h3>
+                    <div class="card-subtitle">Machine Learning | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Implémentation par descente de gradient sur le dataset PIMA : normalisation Z-score, gestion du déséquilibre et évaluation complète (79% accuracy, F1-score 0.66).</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Machine Learning</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Compétences -->
     <section id="competences">
         <h2 class="section-title">⚡ Compétences Techniques</h2>
         
@@ -719,25 +976,32 @@
                 <td>PyTorch, Keras, ONNX, HHB/TVM, quantification, CSI-NN2, déploiement CPU & NPU</td>
             </tr>
             <tr>
-                <th>Microélectronique & FPGA</th>
+                <th>Conception Microélectronique & FPGA</th>
                 <td>VLSI analogique/numérique, VHDL, Verilog, SoC hétérogènes, RISC-V softcore, Efinix Trion, VIVADO, Efinity, ModelSim</td>
             </tr>
             <tr>
-                <th>Systèmes Embarqués</th>
-                <td>STM32F4 (HAL/LL/Registres), BeagleBone Black, BeagleV-Ahead, Yocto Linux, modules noyau Linux, Device Tree, PID</td>
+                <th>Systèmes Embarqués & Linux</th>
+                <td>STM32F4 (HAL/LL/Registres), BeagleBone Black, BeagleV-Ahead, Yocto Linux, modules noyau Linux, Device Tree, PID, Timers</td>
             </tr>
             <tr>
-                <th>Électronique & Énergie</th>
-                <td>Routage PCB (Eagle), PSPICE, PSIM, PowerWorld, Dimensionnement PV (UTE C 15-712-1)</td>
+                <th>Électronique & Puissance</th>
+                <td>Routage PCB (Eagle), PSPICE, PSIM, Instrumentation (Oscilloscope), Circuits Analogiques & Numériques</td>
+            </tr>
+            <tr>
+                <th>Génie Électrique & Réseaux</th>
+                <td>PowerWorld, Dimensionnement Solaire (UTE C 15-712-1), Protection DC/Onduleurs, Réseaux Électriques</td>
             </tr>
             <tr>
                 <th>Langages & Outils</th>
-                <td>C, C++, Python, VHDL/Verilog, MATLAB/Simulink, Docker, Git, STM32CubeIDE</td>
+                <td>C, C++, Python, VHDL/Verilog, MATLAB/Simulink, Docker, Git, VS Code, STM32CubeIDE</td>
+            </tr>
+            <tr>
+                <th>Langues</th>
+                <td>Arabe (Natif), Français (B2), Anglais (B2)</td>
             </tr>
         </table>
     </section>
 
-    <!-- Engagements -->
     <section id="engagements">
         <h2 class="section-title">👥 Engagements & Intérêts</h2>
         
@@ -748,7 +1012,7 @@
                     <div class="card-subtitle">Membre Actif | 2025 – Présent</div>
                 </div>
                 <div class="card-body">
-                    <p>Participation à l'événement <strong>Maker Faire</strong>. Pratique régulière du prototypage rapide et du travail en équipe autour de projets électroniques.</p>
+                    <p>Participation à l'événement <strong>Maker Faire</strong>. Pratique régulière du prototypage rapide et du travail en équipe autour de projets électroniques et embarqués.</p>
                 </div>
             </div>
 
