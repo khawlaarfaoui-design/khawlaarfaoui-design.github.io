@@ -74,7 +74,29 @@
             padding: 8rem 2rem 4rem;
             max-width: 1100px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+        }
+
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            padding: 4px;
+            background: #fff;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .hero h1 {
@@ -105,7 +127,7 @@
             margin-bottom: 2rem;
         }
 
-        .hero-contact a {
+        .hero-contact a, .hero-contact span {
             color: var(--text-main);
             text-decoration: none;
             display: flex;
@@ -178,11 +200,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
 
         .card-header {
@@ -314,6 +337,10 @@
     </nav>
 
     <header class="hero">
+        <div class="profile-img-container">
+            <!-- Remplacez 'photo.jpg' par le chemin exact vers votre fichier photo -->
+            <img src="photo.jpg" alt="Khawla Arfaoui" class="profile-img" onerror="this.src='https://via.placeholder.com/160?text=KA'">
+        </div>
         <h1>Khawla Arfaoui</h1>
         <h2>Étudiante Ingénieure Génie Électrique | Systèmes Embarqués, IA Embarquée & VLSI</h2>
         <p>Spécialisée en systèmes embarqués (STM32, BeagleBone, FPGA, RISC-V) et conception microélectronique. Expérience éprouvée dans le déploiement de modèles d'IA optimisés sur cibles à ressources contraintes (NPU, CPU RISC-V).</p>
@@ -331,8 +358,8 @@
             <p>Temps d'inférence CNN sur NPU RISC-V (52.9 FPS)</p>
         </div>
         <div class="metric-card">
-            <h3>6+</h3>
-            <p>Projets Académiques & SoC/FPGA</p>
+            <h3>12+</h3>
+            <p>Projets Académiques, SoC/FPGA & Énergie</p>
         </div>
         <div class="metric-card">
             <h3>2</h3>
@@ -416,12 +443,13 @@
                     <div class="card-subtitle">Société Tunisienne de l'Électricité et du Gaz (STEG), Tunisie</div>
                 </div>
                 <div class="card-body">
-                    <p>Observation des installations électriques industrielles, opérations de maintenance préventive et analyse de plans électriques.</p>
+                    <p>Observation des installations électriques industrielles, opérations de maintenance préventive et analyse de plans électriques. Initiation au contexte d'intégration photovoltaïque en Tunisie.</p>
                 </div>
                 <div class="tags">
                     <span class="tag">Installations Électriques</span>
                     <span class="tag">Maintenance Préventive</span>
                     <span class="tag">Plans Électriques</span>
+                    <span class="tag">Énergie Solaire</span>
                 </div>
             </div>
         </div>
@@ -431,6 +459,7 @@
         <h2 class="section-title">🚀 Projets Académiques & Techniques</h2>
         
         <div class="grid">
+            <!-- Projet Coprocesseur SoC -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Coprocesseur Détection de Contours (SoC)</h3>
@@ -447,6 +476,7 @@
                 </div>
             </div>
 
+            <!-- Projet Microcontrôleur FPGA -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Microcontrôleur RISC-V 32 bits sur FPGA</h3>
@@ -463,6 +493,7 @@
                 </div>
             </div>
 
+            <!-- Projet VLSI -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Conception Circuits VLSI (ADC)</h3>
@@ -478,6 +509,108 @@
                 </div>
             </div>
 
+            <!-- NOUVEAU : Contrôle Moteur STM32 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Contrôle & Supervision Moteur STM32</h3>
+                    <div class="card-subtitle">Systèmes Embarqués Avancés | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Système de régulation basé sur STM32F407 Discovery : implémentation d'un contrôleur PID, mesure tachymétrique via TIM3 (Input Capture), configuration des horloges et canaux ADC au niveau registres.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">STM32F407</span>
+                    <span class="tag">PID</span>
+                    <span class="tag">Timers / ADC</span>
+                    <span class="tag">C / Registres</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : FPGA Efinix Trion -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Projet FPGA Efinix Trion & Intégration Matérielle</h3>
+                    <div class="card-subtitle">Systèmes Numériques & PCB | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Intégration d'IP cores sur FPGA Efinix Trion T8 et interfaçage microcontrôleur. Réalisation pratique comprenant le soudage, les interfaces émetteur/récepteur et le routage PCB.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">Efinix Trion T8</span>
+                    <span class="tag">IP Cores</span>
+                    <span class="tag">PCB</span>
+                    <span class="tag">Soudure & Hardware</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Traitement de Signaux EMG -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Traitement de Signaux Biomédicaux EMG</h3>
+                    <div class="card-subtitle">Traitement du Signal / MATLAB | 2025 – 2026</div>
+                </div>
+                <div class="card-body">
+                    <p>Filtrage d'artefacts et bruit secteur (50Hz), enveloppe RMS via Butterworth basse-haut et extraction de descripteurs fréquentiels (MDF, MNF via FFT) pour la détection de fatigue musculaire.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">FFT / Filtrage</span>
+                    <span class="tag">EMG</span>
+                    <span class="tag">Traitement du Signal</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : PV Kairouan -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Dimensionnement PV Résidentiel (Kairouan)</h3>
+                    <div class="card-subtitle">Énergies Renouvelables | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Étude complète selon la norme UTE C 15-712-1 : analyse de consommation, dimensionnement champ PV (JKM400M-72H), protections DC/fusions, choix de l'onduleur Growatt et vérification des contraintes de tension.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">UTE C 15-712-1</span>
+                    <span class="tag">Growatt</span>
+                    <span class="tag">Photovoltaïque</span>
+                    <span class="tag">Dimensionnement DC</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Électronique de Puissance PSIM -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Simulation Électronique de Puissance</h3>
+                    <div class="card-subtitle">Projet Simulation | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Modélisation et étude de convertisseurs de puissance sous PSIM. Simulation fine des circuits analogiques et de conversion sous PSpice pour validation des comportements dynamiques.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">PSIM</span>
+                    <span class="tag">PSpice</span>
+                    <span class="tag">Conversion d'Énergie</span>
+                    <span class="tag">Électronique</span>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Réseaux Électriques PowerWorld -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Modélisation de Réseaux Électriques</h3>
+                    <div class="card-subtitle">Systèmes Électriques | 2025</div>
+                </div>
+                <div class="card-body">
+                    <p>Analyse et simulation de réseaux électriques sous PowerWorld pour étudier le flux de puissance, la stabilité des lignes et le comportement des nœuds dans un système de puissance.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">PowerWorld</span>
+                    <span class="tag">Réseaux Électriques</span>
+                    <span class="tag">Flux de Puissance</span>
+                </div>
+            </div>
+
+            <!-- Module Noyau Linux -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Module Noyau Linux – BeagleBone Black</h3>
@@ -494,13 +627,14 @@
                 </div>
             </div>
 
+            <!-- Mesure Déphasage STM32 -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Mesure de Déphasage STM32F407</h3>
                     <div class="card-subtitle">Systèmes Embarqués | 2025 – 2026</div>
                 </div>
                 <div class="card-body">
-                    <p>Génération de signaux sinusoïdaux via DAC/DMA et acquisition ADC double-canal temps réel avec validation à l'oscilloscope.</p>
+                    <p>Génération de signaux sinusoïdaux via DAC/DMA et acquisition ADC double-canal temps réel avec calcul de déphasage et validation à l'oscilloscope.</p>
                 </div>
                 <div class="tags">
                     <span class="tag">STM32CubeIDE</span>
@@ -510,18 +644,20 @@
                 </div>
             </div>
 
+            <!-- ML Classification Diabète -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Barrière Infrarouge avec Comptage</h3>
-                    <div class="card-subtitle">Carte Électronique | 2024 – 2025</div>
+                    <h3 class="card-title">Régression Logistique From-Scratch (ML)</h3>
+                    <div class="card-subtitle">Machine Learning | 2025 – 2026</div>
                 </div>
                 <div class="card-body">
-                    <p>Création d'une carte avec NE555 (38 kHz), récepteur CD4093 et affichage 7 segments CD4033. Simulation PSPICE et routage PCB sur Eagle.</p>
+                    <p>Implémentation par descente de gradient sur le dataset PIMA : normalisation Z-score, gestion du déséquilibre et évaluation complète (79% accuracy, F1-score 0.66).</p>
                 </div>
                 <div class="tags">
-                    <span class="tag">Eagle PCB</span>
-                    <span class="tag">PSPICE</span>
-                    <span class="tag">Électronique</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Machine Learning</span>
                 </div>
             </div>
         </div>
@@ -537,15 +673,19 @@
             </tr>
             <tr>
                 <th>Conception Microélectronique & FPGA</th>
-                <td>VLSI analogique/numérique, VHDL, Verilog, SoC hétérogènes, RISC-V softcore, VIVADO, Efinity, ModelSim</td>
+                <td>VLSI analogique/numérique, VHDL, Verilog, SoC hétérogènes, RISC-V softcore, Efinix Trion, VIVADO, Efinity, ModelSim</td>
             </tr>
             <tr>
                 <th>Systèmes Embarqués & Linux</th>
-                <td>STM32F4 (HAL/LL), BeagleBone Black, BeagleV-Ahead, Yocto Linux, modules noyau Linux, Device Tree</td>
+                <td>STM32F4 (HAL/LL/Registres), BeagleBone Black, BeagleV-Ahead, Yocto Linux, modules noyau Linux, Device Tree, PID, Timers</td>
             </tr>
             <tr>
-                <th>Électronique & PCB</th>
-                <td>Routage PCB (Eagle), PSPICE, instrumentation (Oscilloscope), circuits analogiques et numériques</td>
+                <th>Électronique & Puissance</th>
+                <td>Routage PCB (Eagle), PSPICE, PSIM, Instrumentation (Oscilloscope), Circuits Analogiques & Numériques</td>
+            </tr>
+            <tr>
+                <th>Génie Électrique & Réseaux</th>
+                <td>PowerWorld, Dimensionnement Solaire (UTE C 15-712-1), Protection DC/Onduleurs, Réseaux Électriques</td>
             </tr>
             <tr>
                 <th>Langages & Outils</th>
